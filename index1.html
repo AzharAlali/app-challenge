@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Attribute Estimator</title>
+
+  <meta name="description" content="Given count of resources and attributesPerResource , display total attributes">
+  <meta name="author" content="Azhar Alali">
+
+  <!-- get current Bootstrap Material Design styles from https://mdbootstrap.com/md-bootstrap-cdn/ -->
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+
+  <!-- required for sticky footer -->
+  <style>
+    body,
+    .sticky-footer-wrapper {
+      min-height: 100vh;
+    }
+  </style>
+
+</head>
+
+<body class="d-flex flex-column sticky-footer-wrapper">
+  <!-- Bootstrap container or container-fluid (whole width) -->
+  <!-- https://getbootstrap.com/docs/4.0/layout/overview/ -->
+  <!-- margin top 5 ($spacer * 3) -->
+  <main class="container mt-5 flex-fill">
+
+    <!--Container has rows - first row -->
+    <div class="row">
+
+      <!--Rows have columns - column 1 (7/12) -->
+      <div class="col-md-7 mb-4">
+
+        <h2>Find the sum</h2>
+
+
+        <fieldset class="mt-4">
+          <label for="resources">Enter the number of resources:</label>
+          <input id="firstNumber" type="number" min="1" max="250" value="">
+          <span id="num-one" class="num-one"></span>
+        </fieldset>
+
+        <fieldset class="mt-4">
+          <label for="attributesPerResource">Enter the number of attributes:</label>
+          <input id="secondNumber" type="number" min="1" max="250" value="">
+          <span id="num-two" class="num-two"></span>
+        </fieldset>
+
+
+
+
+        <button id="addButton" class="btn btn-primary">sum</button>
+
+      </div>
+      <!--end column 1-->
+
+      <!--column 2 (5/12) -->
+      <div class="col-md-5 mb-4">
+
+
+        <p id="result"></p>
+
+      </div>
+
+
+    </div>
+
+
+  </main>
+
+  <!-- sticky footer with padding on y-axis (top and bottom) -->
+ 
+  <script>
+
+const sum = (x, y) => { return x * y }
+
+
+const updateWithSum = async (event) => {
+  document.querySelector('#result').innerHTML = ''
+  if (document.querySelector('#firstNumber').checkValidity() && document.querySelector('#secondNumber').checkValidity()) {
+    const regex = /[^a-zA-Z_]/g
+    // const s = document.querySelector('#guest').value.replace(regex, '')
+    const i = parseInt(document.querySelector('#firstNumber').value)
+    const j = parseInt(document.querySelector('#secondNumber').value)
+   
+
+    const ans = `Your sum is ${sum(i, j)}`
+    document.querySelector('#result').innerHTML = ans
+  }
+}
+
+
+document.addEventListener('click', event => {
+  if (event.target && event.target.id === 'addButton') { updateWithSum(event) }
+})
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
